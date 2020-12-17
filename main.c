@@ -8,7 +8,8 @@
 #include <string.h>
 #include <stdint.h>
 #include <stdbool.h>
-#include <limits.h>
+//changed <limits.h> to <linux/limits.h> because PATH_MAX was undefined
+#include <linux/limits.h> 
 #include <unistd.h>
 #include "devices.h"
 #include "link.h"
@@ -20,8 +21,8 @@
 #define COMPORT_LEN     (32)
 #define FUSES_LEN       (128)
 
-#define SW_VER_NUMBER   "0.5"
-#define SW_VER_DATE     "03.11.2020"
+#define SW_VER_NUMBER   "0.4"
+#define SW_VER_DATE     "11.04.2020"
 
 typedef struct
 {
@@ -65,7 +66,8 @@ void help(void)
   printf("  List of supported devices:\n    ");
   for (i = 1; i < DEVICES_GetNumber()+1; i++)
   {
-    printf("%-14s", DEVICES_GetNameByNumber(i-1));
+    printf(DEVICES_GetNameByNumber(i-1));
+    printf("\t");
     if (i % 4 == 0 ? printf("\n    "): printf(""));
   }
   printf("\n");
