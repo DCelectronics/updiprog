@@ -8,6 +8,8 @@ The main purpose is the possibility to use UPDI to flash the new TinyAVR at any 
 
 [Code::Blocks IDE](http://www.codeblocks.org/) was used to write code and compile it.
 
+For Linux use the Makefile to make the updiprog.
+
 I have tried to write it portable for Windows and Linux but can't really test it on Linux because of the driver bug for CH340 USB to serial converter, it can't work with parity bits.
 
 I am using CH340 USB to TTL converter to program Atmel Tiny devices, you just need to connect TX and RX lines, they are actually already have a 1.5k output resistor on my connector, so just connect them and don't forget to connect GND of the converter with GND of the PCB with Tiny MCU. There is also a possibility to supply Tiny with the voltage from the CH340 converter, so this adapter seems to be a good choice to start with programming of AVR devices.
@@ -57,15 +59,25 @@ I am using CH340 USB to TTL converter to program Atmel Tiny devices, you just ne
 
     Erase Flash memory:
         updiprog.exe -c COM10 -d tiny81x -e
+	or for Linux
+	./updiprog -c /dev/ttyUSB0 -t tiny81x -e
     
     Program Flash memory from file tiny_fw.hex:
         updiprog.exe -c COM10 -d tiny81x -w tiny_fw.hex
-		
+        or for Linux
+        ./updiprog -c /dev/ttyUSB0 -d tiny81x -w tiny_fw.hex
+
     Read Flash memory to file tiny_fw.hex:
         updiprog.exe -c COM10 -d tiny81x -r tiny_fw.hex
+        or for Linux
+        ./updiprog -c /dev/ttyUSB0 -d tiny81x -r tiny_fw.hex
+
+    Read all fuses:
+	updiprog.exe -c COM10 -d tiny81x -fr
+        or for Linux
+        ./updiprog -c /dev/ttyUSB0 -d tiny81x -fr
 		
-	Read all fuses:
-		updiprog.exe -c COM10 -d tiny81x -fr
-		
-	Write 0x04 to fuse number 1 and 0x1b to fuse number 5:
-		updiprog.exe -c COM10 -d tiny81x -fw 1:0x04 5:0x1b
+    Write 0x04 to fuse number 1 and 0x1b to fuse number 5:
+	updiprog.exe -c COM10 -d tiny81x -fw 1:0x04 5:0x1b       
+	or for Linux
+        ./updiprog -c /dev/ttyUSB0 -d tiny81x -fw 1:0x04 5:0x1b 
