@@ -74,10 +74,10 @@ I am using CH340 USB to TTL converter to program Atmel Tiny devices, you just ne
 
     Read all fuses:
 	updiprog.exe -c COM10 -d tiny81x -fr
-        or for Linux
-        ./updiprog -c /dev/ttyUSB0 -d tiny81x -fr
+	or for Linux
+	/updiprog -c /dev/ttyUSB0 -d tiny81x -fr
 		
     Write 0x04 to fuse number 1 and 0x1b to fuse number 5:
-	updiprog.exe -c COM10 -d tiny81x -fw 1:0x04 5:0x1b       
+	updiprog.exe -c COM10 -d tiny81x -fw 1:0x04 5:0x1b
 	or for Linux
-        ./updiprog -c /dev/ttyUSB0 -d tiny81x -fw 1:0x04 5:0x1b 
+	./updiprog -c /dev/ttyUSB0 -d tiny81x -fw 1:0x04 5:0x1b 
