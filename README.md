@@ -81,3 +81,12 @@ I am using CH340 USB to TTL converter to program Atmel Tiny devices, you just ne
         updiprog.exe -c COM10 -d tiny81x -fw 1:0x04 5:0x1b
         or for Linux
         ./updiprog -c /dev/ttyUSB0 -d tiny81x -fw 1:0x04 5:0x1b 
+	
+    List of supported devices:
+    	mega480x    mega320x        mega160x        mega80x 
+    	tiny321x    tiny160x        tiny161x        tiny80x 
+    	tiny81x     tiny40x         tiny41x         tiny20x 
+    	tiny21x     
+	
+
+	
